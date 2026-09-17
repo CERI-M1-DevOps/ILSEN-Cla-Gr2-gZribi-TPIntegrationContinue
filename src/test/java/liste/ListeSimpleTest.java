@@ -253,4 +253,30 @@ class ListeSimpleTest {
         listeATester.echanger(r1, r2);
         assertEquals("ListeSimple(Noeud(4), Noeud(2), Noeud(3), Noeud(1), Noeud(5))", listeATester.toString());
     }
+
+    @Test
+    void echangerMemesNoeuds() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        Noeud r1 = listeATester.tete;
+        listeATester.echanger(r1, r1);
+        assertEquals("ListeSimple(Noeud(2), Noeud(1))", listeATester.toString());
+    }
+
+    @Test
+    void modifiePremierElementInexistant() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.modifiePremier(5, 9);
+        assertEquals("ListeSimple(Noeud(2), Noeud(1))", listeATester.toString());
+    }
+
+    @Test
+    void supprimePremierElementInexistantListeNonVide() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.supprimePremier(5);
+        assertEquals("ListeSimple(Noeud(2), Noeud(1))", listeATester.toString());
+        assertEquals(2, listeATester.getSize());
+    }
 }
